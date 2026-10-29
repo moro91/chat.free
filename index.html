@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ارتباط با ما | پیام‌رسان</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Tahoma, "Segoe UI", sans-serif; }
+    
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    p.subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #444;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+      font-family: inherit;
+      background: #fafafa;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+      border-color: #667eea;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .message {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+
+    .message.success {
+      display: block;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      display: block;
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* انیمیشن لودینگ دکمه */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📬 ارتباط با ما</h1>
+    <p class="subtitle">پیام خود را ارسال کنید، در اسرع وقت پاسخ می‌دهیم.</p>
+
+    <form id="contactForm">
+      <!-- کلید اختصاصی شما در اینجا قرار گرفت -->
+      <input type="hidden" name="access_key" value="00bd5cf4-844b-4250-82d5-d9fc29db96b7">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+      <div class="form-group">
+        <label for="name">نام شما</label>
+        <input type="text" id="name" name="name" placeholder="نامتان را وارد کنید" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">ایمیل شما</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">متن پیام</label>
+        <textarea id="message" name="message" placeholder="پیام خود را اینجا بنویسید..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span>ارسال پیام</span>
+      </button>
+    </form>
+
+    <div id="resultMessage" class="message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const resultMessage = document.getElementById('resultMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'در حال ارسال... <span class="spinner"></span>';
+      resultMessage.className = 'message';
+      resultMessage.style.display = 'none';
+
+      fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: json
+      })
+      .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+              resultMessage.textContent = "✅ پیام شما با موفقیت ارسال شد!";
+              resultMessage.className = "message success";
+              form.reset();
+          } else {
+              console.log(response);
+              resultMessage.textContent = "❌ خطا در ارسال پیام. لطفاً بعداً تلاش کنید.";
+              resultMessage.className = "message error";
+          }
+      })
+      .catch(error => {
+          console.log(error);
+          resultMessage.textContent = "❌ خطای شبکه. اتصال اینترنت خود را بررسی کنید.";
+          resultMessage.className = "message error";
+      })
+      .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>ارسال پیام</span>';
+      });
+    });
+  </script>
+</body>
+</html>
