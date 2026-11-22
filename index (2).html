@@ -4,91 +4,107 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>شمع‌های دست‌ساز</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;800;900&display=swap">
 <style>
-:root{--bg:#E9EDE4;--card:#F6F8F2;--ink:#23332B;--mute:#5E6E64;--accent:#B4586B;--onaccent:#fff;--line:#C9D1C2;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17201B;--card:#1F2B24;--ink:#E7ECE2;--mute:#A3B0A7;--accent:#E08A9C;--onaccent:#2A1018;--line:#33443A;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#17201B;--card:#1F2B24;--ink:#E7ECE2;--mute:#A3B0A7;--accent:#E08A9C;--onaccent:#2A1018;--line:#33443A;color-scheme:dark}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.9}
-.wrap{max-width:1000px;margin:auto;padding:0 20px}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-header b{font-weight:800;font-size:1.2rem}
-.cartbtn{background:none;border:1.5px solid var(--ink);color:var(--ink);border-radius:99px;padding:4px 16px;font:inherit;cursor:pointer}
-.hero{display:grid;grid-template-columns:1fr 160px;gap:24px;align-items:center;padding:36px 0 44px;border-bottom:1px solid var(--line)}
-.hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;line-height:1.4;margin:0 0 8px}
-.hero p{color:var(--mute);margin:0;max-width:34ch}
-.candle{position:relative;width:70px;height:120px;margin:auto}
-.candle i{position:absolute;bottom:0;width:70px;height:90px;background:var(--accent);border-radius:10px 10px 6px 6px}
-.candle em{position:absolute;top:8px;left:31px;width:8px;height:22px;background:var(--ink);opacity:.8;border-radius:4px}
-.candle u{position:absolute;top:-14px;left:24px;width:22px;height:38px;background:#F2B25C;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;transform-origin:50% 90%;animation:fl 1.6s ease-in-out infinite alternate;box-shadow:0 0 28px 10px rgba(242,178,92,.45)}
-@keyframes fl{from{transform:scale(1,.92) rotate(-3deg)}to{transform:scale(.94,1.06) rotate(3deg)}}
-@media (prefers-reduced-motion:reduce){.candle u{animation:none}}
-h2{font-size:1.3rem;margin:32px 0 12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
-.p{background:var(--card);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
-.sw{height:90px;border-radius:10px}
-.p h3{margin:6px 0 0;font-size:1.05rem}.p small{color:var(--mute)}
-.row{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
-button.add,button.go{background:var(--accent);color:var(--onaccent);border:0;border-radius:10px;padding:6px 14px;font:inherit;font-weight:500;cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-#panel{background:var(--card);border-radius:14px;padding:20px;margin:28px 0 48px}
-.line{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
-.q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
-label{display:block;margin-top:12px;font-weight:500}
-input,textarea{width:100%;font:inherit;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+:root{--bg:#F1EEE8;--ink:#2B2320;--mute:#6B605A;--accent:#B4586B;--onaccent:#fff;--card:#fff;--line:#D9D2C8;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1A1514;--ink:#F1E9E2;--mute:#B3A79F;--accent:#E08A9C;--onaccent:#2A1018;--card:#241D1B;--line:#3B302D;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1A1514;--ink:#F1E9E2;--mute:#B3A79F;--accent:#E08A9C;--onaccent:#2A1018;--card:#241D1B;--line:#3B302D;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.8}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) 20px 10px;color:#fff;mix-blend-mode:difference}
+header b{font-weight:800}
+header button{font:inherit;color:#fff;background:none;border:1.5px solid #fff;border-radius:99px;padding:2px 16px;cursor:pointer}
+nav{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:12px;mix-blend-mode:difference}
+nav a{width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;display:block;transition:.25s}
+nav a.on{background:#fff;transform:scale(1.5)}
+.slide{position:sticky;top:0;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;padding:80px 8vw;background:var(--c);color:#fff;overflow:hidden}
+.slide.hero{background:var(--bg);color:var(--ink);grid-template-columns:1fr 1fr}
+.txt{opacity:0;transform:translateY(40px);transition:opacity .7s,transform .7s}
+.on .txt{opacity:1;transform:none}
+.txt h1,.txt h2{margin:0;font-weight:900;line-height:1.25;font-size:clamp(2.4rem,8vw,5.6rem)}
+.txt p{margin:10px 0 18px;font-size:1.15rem;opacity:.85;max-width:30ch}
+.txt .price{font-size:1.5rem;font-weight:800}
+.q{display:flex;align-items:center;gap:14px;margin-top:18px}
+.q button{width:46px;height:46px;border-radius:50%;border:2px solid currentColor;background:none;color:inherit;font:inherit;font-size:1.4rem;cursor:pointer}
+.q button.plus{background:#fff;color:#222;border-color:#fff}
+.q span{font-size:1.4rem;min-width:2ch;text-align:center;font-weight:800}
+button:focus-visible,a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.candle{position:relative;width:110px;height:min(52vh,340px);margin:auto;will-change:transform}
+.candle i{position:absolute;bottom:0;width:100%;height:78%;border-radius:14px 14px 8px 8px;box-shadow:inset -16px 0 24px rgba(0,0,0,.18),0 30px 40px rgba(0,0,0,.25)}
+.candle em{position:absolute;top:19%;left:calc(50% - 4px);width:8px;height:44px;background:#2a1a12;border-radius:4px}
+.candle u{position:absolute;top:0;left:calc(50% - 20px);width:40px;height:72px;background:radial-gradient(circle at 50% 70%,#FFF3C4,#F2B25C 60%,#E8793A);border-radius:50% 50% 50% 50%/65% 65% 35% 35%;transform-origin:50% 95%;transform:scale(0);box-shadow:0 0 70px 30px rgba(242,178,92,.5)}
+.on .candle u{transform:scale(1);animation:fl 1.5s ease-in-out .6s infinite alternate;transition:transform .8s}
+@keyframes fl{from{transform:scale(1,.92) rotate(-3deg)}to{transform:scale(.94,1.07) rotate(3deg)}}
+.hint{margin-top:26px;color:var(--mute)}
+#order{position:relative;z-index:30;background:var(--bg);padding:90px 8vw 70px;min-height:100vh}
+#order h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;margin:0 0 18px}
+.box{max-width:640px;background:var(--card);border-radius:16px;padding:22px}
+.line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.btn{display:inline-block;background:var(--accent);color:var(--onaccent);border:0;border-radius:10px;padding:8px 18px;font:inherit;font-weight:500;cursor:pointer;text-decoration:none;margin:4px 0 4px 8px}
 #msg{margin-top:12px;color:var(--accent);font-weight:500;white-space:pre-line}
-.lnk{display:inline-block;text-decoration:none;margin-inline-start:8px}
-@media (max-width:560px){.hero{grid-template-columns:1fr}.candle{order:-1}}
+@media (max-width:700px){.slide{grid-template-columns:1fr;text-align:center;padding:84px 24px 40px;gap:0}.candle{width:84px;height:34vh}.txt p{margin-inline:auto}.q{justify-content:center}nav{left:8px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header><b>شمع‌های دست‌ساز</b><button class="cartbtn" onclick="document.getElementById('panel').scrollIntoView()">سبد خرید (<span id="cnt">۰</span>)</button></header>
-<section class="hero">
-<div><h1>شمعی که خانه را آرام می‌کند</h1><p>شمع‌های سویا و موم زنبور، ریخته‌شده با دست. سفارش بدهید، پرداخت کنید، سفارش‌تان آماده می‌شود.</p></div>
-<div class="candle" aria-hidden="true"><u></u><em></em><i></i></div>
-</section>
-<h2>محصولات</h2>
-<div class="grid" id="grid"></div>
-<section id="panel">
-<h2 style="margin-top:0">سبد خرید و ثبت سفارش</h2>
+<header><b>شمع‌های دست‌ساز</b><button onclick="go('order')">سبد خرید (<span id="cnt">۰</span>)</button></header>
+<nav id="dots" aria-label="اسلایدها"></nav>
+<main id="slides"></main>
+<section id="order">
+<h2>سبد خرید و پرداخت</h2>
+<div class="box">
 <div id="lines"></div>
 <div class="line"><b>جمع کل</b><b id="total">۰ تومان</b></div>
 <p style="margin-top:18px"><b>پرداخت کارت‌به‌کارت</b></p>
-<p>شماره کارت: <b dir="ltr">6219-8619-9439-2321</b> <button class="add" onclick="cp('6219861994392321','شماره کارت کپی شد.')">کپی شماره کارت</button></p>
+<p>شماره کارت: <b dir="ltr">6219-8619-9439-2321</b> <button class="btn" onclick="cp('6219861994392321','شماره کارت کپی شد.')">کپی شماره کارت</button></p>
 <ol><li>مبلغ کل را به این کارت واریز کنید.</li><li>متن سفارش را کپی کنید و همراه عکس رسید در اپلیکیشن بله برای <b dir="ltr">@mshadmin</b> بفرستید.</li><li>نام و آدرس‌تان را هم در پیام بنویسید.</li></ol>
-<p><button class="go" onclick="cp(orderText(),'متن سفارش کپی شد. حالا در بله بفرستید.')">کپی متن سفارش</button> <a class="go lnk" href="https://ble.ir/mshadmin" target="_blank" rel="noopener">باز کردن بله</a></p>
+<button class="btn" onclick="cp(orderText(),'متن سفارش کپی شد. حالا در بله بفرستید.')">کپی متن سفارش</button>
+<a class="btn" href="https://ble.ir/mshadmin" target="_blank" rel="noopener">باز کردن بله</a>
 <div id="msg" role="status"></div>
-</section>
 </div>
+</section>
 <script>
 const P=[
-{id:"vanilla",n:"شمع وانیلی",d:"سویا · ۲۰۰ گرم",p:380000,c:"#E8D9B0"},
-{id:"lavender",n:"شمع اسطوخودوس",d:"سویا · ۲۰۰ گرم",p:420000,c:"#B7A6D1"},
-{id:"rose",n:"شمع گل رز",d:"موم زنبور · ۱۵۰ گرم",p:450000,c:"#D99AAA"},
-{id:"cinnamon",n:"شمع دارچین",d:"سویا · ۲۰۰ گرم",p:400000,c:"#C28A5E"},
-{id:"sandal",n:"شمع صندل",d:"موم زنبور · ۲۵۰ گرم",p:520000,c:"#A88B6A"},
-{id:"mini",n:"ست سه‌تایی مینی",d:"سه رایحه · ۵۰ گرم",p:350000,c:"#9DB8A4"}];
-const cart={};
-const fa=n=>Number(n).toLocaleString("fa-IR");
-document.getElementById("grid").innerHTML=P.map(x=>`<article class="p"><div class="sw" style="background:${x.c}"></div><h3>${x.n}</h3><small>${x.d}</small><div class="row"><b>${fa(x.p)} تومان</b><button class="add" onclick="add('${x.id}',1)">افزودن</button></div></article>`).join("");
-function add(id,k){cart[id]=(cart[id]||0)+k;if(cart[id]<=0)delete cart[id];draw()}
+{id:"vanilla",n:"وانیل",d:"شمع سویا · ۲۰۰ گرم. شیرین و گرم، مناسب شب‌های آرام.",p:380000,c:"#8A6A2F",t:"#F3E3B8"},
+{id:"lavender",n:"اسطوخودوس",d:"شمع سویا · ۲۰۰ گرم. عطر خواب‌آور برای پایان روز.",p:420000,c:"#5B4A86",t:"#CFC2EA"},
+{id:"rose",n:"گل رز",d:"موم زنبور · ۱۵۰ گرم. نرم و گلی با سوختن طولانی.",p:450000,c:"#A24560",t:"#F2C4D0"},
+{id:"cinnamon",n:"دارچین",d:"شمع سویا · ۲۰۰ گرم. عطر پاییز و چای داغ.",p:400000,c:"#7A4326",t:"#E8BE98"},
+{id:"sandal",n:"صندل",d:"موم زنبور · ۲۵۰ گرم. چوبی و عمیق، بزرگ‌ترین شمع ما.",p:520000,c:"#5C4A36",t:"#D9C3A1"},
+{id:"mini",n:"ست سه‌تایی مینی",d:"سه رایحه · هرکدام ۵۰ گرم. هدیه‌ای آماده.",p:350000,c:"#3F6B55",t:"#C3E0CF"}];
+const cart={},fa=n=>Number(n).toLocaleString("fa-IR"),$=id=>document.getElementById(id);
+const candle=t=>`<div class="candle" aria-hidden="true"><u></u><em></em><i style="background:${t}"></i></div>`;
+$("slides").innerHTML=`<section class="slide hero" id="s0">${candle("#E9DFD0")}<div class="txt"><h1>شمعی که خانه را آرام می‌کند</h1><p>شمع‌های سویا و موم زنبور، ریخته‌شده با دست. پایین بروید و رایحه‌تان را انتخاب کنید.</p><div class="hint">اسکرول کنید ↓</div></div></section>`+
+P.map((x,i)=>`<section class="slide" id="s${i+1}" style="--c:${x.c}">${candle(x.t)}<div class="txt"><h2>${x.n}</h2><p>${x.d}</p><div class="price">${fa(x.p)} تومان</div><div class="q"><button aria-label="کم کردن" onclick="add('${x.id}',-1)">−</button><span id="q-${x.id}">۰</span><button class="plus" aria-label="افزودن به سبد" onclick="add('${x.id}',1)">+</button></div></div></section>`).join("");
+const S=[...document.querySelectorAll(".slide")];
+$("dots").innerHTML=S.map((_,i)=>`<a href="#" aria-label="اسلاید ${fa(i+1)}" onclick="go('s${i}');return false"></a>`).join("")+`<a href="#" aria-label="سبد خرید" onclick="go('order');return false"></a>`;
+const D=[...$("dots").children];
+function go(id){$(id).scrollIntoView()}
+function add(id,k){cart[id]=Math.max(0,(cart[id]||0)+k);if(!cart[id])delete cart[id];draw()}
 function draw(){
-const ids=Object.keys(cart);let t=0,c=0;
-document.getElementById("lines").innerHTML=ids.length?ids.map(i=>{const x=P.find(y=>y.id===i);t+=x.p*cart[i];c+=cart[i];return `<div class="line"><span>${x.n}</span><span class="q"><button aria-label="کم کردن" onclick="add('${i}',-1)">−</button> ${fa(cart[i])} <button aria-label="زیاد کردن" onclick="add('${i}',1)">+</button></span><span>${fa(x.p*cart[i])}</span></div>`}).join(""):"<p>سبد خرید خالی است. از بخش محصولات شمع اضافه کنید.</p>";
-document.getElementById("total").textContent=fa(t)+" تومان";document.getElementById("cnt").textContent=fa(c)}
+let t=0,c=0;const ids=Object.keys(cart);
+P.forEach(x=>$("q-"+x.id).textContent=fa(cart[x.id]||0));
+$("lines").innerHTML=ids.length?ids.map(i=>{const x=P.find(y=>y.id===i);t+=x.p*cart[i];c+=cart[i];return `<div class="line"><span>${x.n} × ${fa(cart[i])}</span><span>${fa(x.p*cart[i])}</span></div>`}).join(""):"<p>سبد خالی است. به بالا بروید و یک شمع اضافه کنید.</p>";
+$("total").textContent=fa(t)+" تومان";$("cnt").textContent=fa(c)}
 function orderText(){
 const ids=Object.keys(cart);let t=0;
 const l=ids.map(i=>{const x=P.find(y=>y.id===i);t+=x.p*cart[i];return `${x.n} × ${fa(cart[i])}`});
 return "سفارش جدید\n"+(l.length?l.join("\n"):"(سبد خالی)")+"\nمبلغ کل: "+fa(t)+" تومان\nنام:\nآدرس:\nشماره تماس:"}
 async function cp(text,ok){
-const m=document.getElementById("msg");
-if(text.indexOf("(سبد خالی)")>-1){m.textContent="ابتدا یک شمع به سبد اضافه کنید.";return}
+const m=$("msg");
+if(text.includes("(سبد خالی)")){m.textContent="ابتدا یک شمع به سبد اضافه کنید.";return}
 try{await navigator.clipboard.writeText(text);m.textContent=ok}
 catch(e){m.textContent="کپی خودکار انجام نشد. این متن را دستی کپی کنید:\n"+text}}
-draw();
+let tick=false;
+function onScroll(){tick=false;const vh=innerHeight;let act=0;
+S.forEach((s,i)=>{const r=s.getBoundingClientRect();
+s.classList.toggle("on",r.top<vh*.55&&r.top>-vh*.9||(i==0&&r.top>=-vh*.9));
+const k=Math.max(0,r.top),cd=s.querySelector(".candle");
+cd.style.transform=`translateY(${k*.22}px) rotate(${k*.01}deg)`;
+if(r.top<=vh*.5)act=i});
+if($("order").getBoundingClientRect().top<vh*.6)act=S.length;
+D.forEach((d,i)=>d.classList.toggle("on",i==act))}
+addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
+draw();onScroll();
 </script>
 </body>
 </html>
