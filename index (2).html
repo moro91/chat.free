@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>شمع‌های دست‌ساز</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;800&display=swap">
+<style>
+:root{--bg:#E9EDE4;--card:#F6F8F2;--ink:#23332B;--mute:#5E6E64;--accent:#B4586B;--onaccent:#fff;--line:#C9D1C2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17201B;--card:#1F2B24;--ink:#E7ECE2;--mute:#A3B0A7;--accent:#E08A9C;--onaccent:#2A1018;--line:#33443A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17201B;--card:#1F2B24;--ink:#E7ECE2;--mute:#A3B0A7;--accent:#E08A9C;--onaccent:#2A1018;--line:#33443A;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.9}
+.wrap{max-width:1000px;margin:auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+header b{font-weight:800;font-size:1.2rem}
+.cartbtn{background:none;border:1.5px solid var(--ink);color:var(--ink);border-radius:99px;padding:4px 16px;font:inherit;cursor:pointer}
+.hero{display:grid;grid-template-columns:1fr 160px;gap:24px;align-items:center;padding:36px 0 44px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;line-height:1.4;margin:0 0 8px}
+.hero p{color:var(--mute);margin:0;max-width:34ch}
+.candle{position:relative;width:70px;height:120px;margin:auto}
+.candle i{position:absolute;bottom:0;width:70px;height:90px;background:var(--accent);border-radius:10px 10px 6px 6px}
+.candle em{position:absolute;top:8px;left:31px;width:8px;height:22px;background:var(--ink);opacity:.8;border-radius:4px}
+.candle u{position:absolute;top:-14px;left:24px;width:22px;height:38px;background:#F2B25C;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;transform-origin:50% 90%;animation:fl 1.6s ease-in-out infinite alternate;box-shadow:0 0 28px 10px rgba(242,178,92,.45)}
+@keyframes fl{from{transform:scale(1,.92) rotate(-3deg)}to{transform:scale(.94,1.06) rotate(3deg)}}
+@media (prefers-reduced-motion:reduce){.candle u{animation:none}}
+h2{font-size:1.3rem;margin:32px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.p{background:var(--card);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.sw{height:90px;border-radius:10px}
+.p h3{margin:6px 0 0;font-size:1.05rem}.p small{color:var(--mute)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+button.add,button.go{background:var(--accent);color:var(--onaccent);border:0;border-radius:10px;padding:6px 14px;font:inherit;font-weight:500;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+#panel{background:var(--card);border-radius:14px;padding:20px;margin:28px 0 48px}
+.line{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
+label{display:block;margin-top:12px;font-weight:500}
+input,textarea{width:100%;font:inherit;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+#msg{margin-top:12px;color:var(--accent);font-weight:500;white-space:pre-line}
+.lnk{display:inline-block;text-decoration:none;margin-inline-start:8px}
+@media (max-width:560px){.hero{grid-template-columns:1fr}.candle{order:-1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><b>شمع‌های دست‌ساز</b><button class="cartbtn" onclick="document.getElementById('panel').scrollIntoView()">سبد خرید (<span id="cnt">۰</span>)</button></header>
+<section class="hero">
+<div><h1>شمعی که خانه را آرام می‌کند</h1><p>شمع‌های سویا و موم زنبور، ریخته‌شده با دست. سفارش بدهید، پرداخت کنید، سفارش‌تان آماده می‌شود.</p></div>
+<div class="candle" aria-hidden="true"><u></u><em></em><i></i></div>
+</section>
+<h2>محصولات</h2>
+<div class="grid" id="grid"></div>
+<section id="panel">
+<h2 style="margin-top:0">سبد خرید و ثبت سفارش</h2>
+<div id="lines"></div>
+<div class="line"><b>جمع کل</b><b id="total">۰ تومان</b></div>
+<p style="margin-top:18px"><b>پرداخت کارت‌به‌کارت</b></p>
+<p>شماره کارت: <b dir="ltr">6219-8619-9439-2321</b> <button class="add" onclick="cp('6219861994392321','شماره کارت کپی شد.')">کپی شماره کارت</button></p>
+<ol><li>مبلغ کل را به این کارت واریز کنید.</li><li>متن سفارش را کپی کنید و همراه عکس رسید در اپلیکیشن بله برای <b dir="ltr">@mshadmin</b> بفرستید.</li><li>نام و آدرس‌تان را هم در پیام بنویسید.</li></ol>
+<p><button class="go" onclick="cp(orderText(),'متن سفارش کپی شد. حالا در بله بفرستید.')">کپی متن سفارش</button> <a class="go lnk" href="https://ble.ir/mshadmin" target="_blank" rel="noopener">باز کردن بله</a></p>
+<div id="msg" role="status"></div>
+</section>
+</div>
+<script>
+const P=[
+{id:"vanilla",n:"شمع وانیلی",d:"سویا · ۲۰۰ گرم",p:380000,c:"#E8D9B0"},
+{id:"lavender",n:"شمع اسطوخودوس",d:"سویا · ۲۰۰ گرم",p:420000,c:"#B7A6D1"},
+{id:"rose",n:"شمع گل رز",d:"موم زنبور · ۱۵۰ گرم",p:450000,c:"#D99AAA"},
+{id:"cinnamon",n:"شمع دارچین",d:"سویا · ۲۰۰ گرم",p:400000,c:"#C28A5E"},
+{id:"sandal",n:"شمع صندل",d:"موم زنبور · ۲۵۰ گرم",p:520000,c:"#A88B6A"},
+{id:"mini",n:"ست سه‌تایی مینی",d:"سه رایحه · ۵۰ گرم",p:350000,c:"#9DB8A4"}];
+const cart={};
+const fa=n=>Number(n).toLocaleString("fa-IR");
+document.getElementById("grid").innerHTML=P.map(x=>`<article class="p"><div class="sw" style="background:${x.c}"></div><h3>${x.n}</h3><small>${x.d}</small><div class="row"><b>${fa(x.p)} تومان</b><button class="add" onclick="add('${x.id}',1)">افزودن</button></div></article>`).join("");
+function add(id,k){cart[id]=(cart[id]||0)+k;if(cart[id]<=0)delete cart[id];draw()}
+function draw(){
+const ids=Object.keys(cart);let t=0,c=0;
+document.getElementById("lines").innerHTML=ids.length?ids.map(i=>{const x=P.find(y=>y.id===i);t+=x.p*cart[i];c+=cart[i];return `<div class="line"><span>${x.n}</span><span class="q"><button aria-label="کم کردن" onclick="add('${i}',-1)">−</button> ${fa(cart[i])} <button aria-label="زیاد کردن" onclick="add('${i}',1)">+</button></span><span>${fa(x.p*cart[i])}</span></div>`}).join(""):"<p>سبد خرید خالی است. از بخش محصولات شمع اضافه کنید.</p>";
+document.getElementById("total").textContent=fa(t)+" تومان";document.getElementById("cnt").textContent=fa(c)}
+function orderText(){
+const ids=Object.keys(cart);let t=0;
+const l=ids.map(i=>{const x=P.find(y=>y.id===i);t+=x.p*cart[i];return `${x.n} × ${fa(cart[i])}`});
+return "سفارش جدید\n"+(l.length?l.join("\n"):"(سبد خالی)")+"\nمبلغ کل: "+fa(t)+" تومان\nنام:\nآدرس:\nشماره تماس:"}
+async function cp(text,ok){
+const m=document.getElementById("msg");
+if(text.indexOf("(سبد خالی)")>-1){m.textContent="ابتدا یک شمع به سبد اضافه کنید.";return}
+try{await navigator.clipboard.writeText(text);m.textContent=ok}
+catch(e){m.textContent="کپی خودکار انجام نشد. این متن را دستی کپی کنید:\n"+text}}
+draw();
+</script>
+</body>
+</html>
